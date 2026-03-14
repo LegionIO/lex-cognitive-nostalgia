@@ -12,7 +12,7 @@ module Legion
           WARMTH_CEILING     = 0.95
           WARMTH_DECAY       = 0.01
           TRIGGER_SENSITIVITY = 0.3
-          ROSY_THRESHOLD     = 0.6
+          ROSY_THRESHOLD = 0.6
           BITTERSWEET_THRESHOLD = 0.5
 
           MEMORY_DOMAINS = %i[
@@ -27,27 +27,27 @@ module Legion
           ].freeze
 
           WARMTH_LABELS = {
-            0.0..0.2  => :faint,
-            0.2..0.4  => :mild,
-            0.4..0.6  => :warm,
-            0.6..0.8  => :tender,
-            0.8..1.0  => :glowing
+            0.0..0.2 => :faint,
+            0.2..0.4 => :mild,
+            0.4..0.6 => :warm,
+            0.6..0.8 => :tender,
+            0.8..1.0 => :glowing
           }.freeze
 
           NOSTALGIA_LABELS = {
-            0.0..0.2  => :absent,
-            0.2..0.4  => :latent,
-            0.4..0.6  => :stirring,
-            0.6..0.8  => :vivid,
-            0.8..1.0  => :overwhelming
+            0.0..0.2 => :absent,
+            0.2..0.4 => :latent,
+            0.4..0.6 => :stirring,
+            0.6..0.8 => :vivid,
+            0.8..1.0 => :overwhelming
           }.freeze
 
           RETROSPECTION_LABELS = {
-            0.0..0.2  => :accurate,
-            0.2..0.4  => :slightly_rose_tinted,
-            0.4..0.6  => :moderately_rose_tinted,
-            0.6..0.8  => :strongly_rose_tinted,
-            0.8..1.0  => :heavily_idealized
+            0.0..0.2 => :accurate,
+            0.2..0.4 => :slightly_rose_tinted,
+            0.4..0.6 => :moderately_rose_tinted,
+            0.6..0.8 => :strongly_rose_tinted,
+            0.8..1.0 => :heavily_idealized
           }.freeze
 
           def self.label_for(labels_hash, value)

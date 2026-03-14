@@ -38,7 +38,9 @@ module Legion
           def nostalgia_report(engine: nil, **)
             eng = engine || nostalgia_engine
             report = eng.nostalgia_report
-            Legion::Logging.debug "[cognitive_nostalgia] report: index=#{report[:rosy_retrospection_index].round(2)} proneness=#{report[:nostalgia_proneness].round(2)}"
+            idx = report[:rosy_retrospection_index].round(2)
+            pro = report[:nostalgia_proneness].round(2)
+            Legion::Logging.debug "[cognitive_nostalgia] report: index=#{idx} proneness=#{pro}"
             { success: true, **report }
           end
 

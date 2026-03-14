@@ -128,7 +128,7 @@ RSpec.describe Legion::Extensions::CognitiveNostalgia::Helpers::NostalgicMemory 
     it 'includes all key fields' do
       h = memory.to_h
       expect(h).to include(:id, :content, :domain, :warmth, :warmth_label, :temporal_distance,
-                            :original_valence, :current_valence, :rosy, :bittersweet, :created_at)
+                           :original_valence, :current_valence, :rosy, :bittersweet, :created_at)
     end
   end
 end

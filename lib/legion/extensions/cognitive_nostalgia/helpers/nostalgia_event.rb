@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'securerandom'
+
 module Legion
   module Extensions
     module CognitiveNostalgia
@@ -8,12 +10,12 @@ module Legion
           attr_reader :id, :memory_id, :trigger, :intensity, :effect_on_mood, :occurred_at
 
           def initialize(memory_id:, trigger:, intensity:, effect_on_mood: 0.0)
-            @id            = SecureRandom.uuid
+            @id            = ::SecureRandom.uuid
             @memory_id     = memory_id
             @trigger       = trigger
             @intensity     = intensity.clamp(0.0, 1.0)
             @effect_on_mood = effect_on_mood.clamp(-1.0, 1.0)
-            @occurred_at   = Time.now.utc
+            @occurred_at = Time.now.utc
           end
 
           def nostalgia_label
@@ -22,13 +24,13 @@ module Legion
 
           def to_h
             {
-              id:             id,
-              memory_id:      memory_id,
-              trigger:        trigger,
-              intensity:      @intensity,
+              id:              id,
+              memory_id:       memory_id,
+              trigger:         trigger,
+              intensity:       @intensity,
               nostalgia_label: nostalgia_label,
-              effect_on_mood: @effect_on_mood,
-              occurred_at:    occurred_at
+              effect_on_mood:  @effect_on_mood,
+              occurred_at:     occurred_at
             }
           end
         end

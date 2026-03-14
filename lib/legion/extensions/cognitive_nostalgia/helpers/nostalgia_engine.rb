@@ -34,9 +34,9 @@ module Legion
               next unless intensity >= Constants::TRIGGER_SENSITIVITY
 
               event = NostalgiaEvent.new(
-                memory_id:     memory.id,
-                trigger:       trigger,
-                intensity:     intensity,
+                memory_id:      memory.id,
+                trigger:        trigger,
+                intensity:      intensity,
                 effect_on_mood: compute_mood_effect(memory, intensity)
               )
               memory.warm!(intensity * 0.1)
@@ -69,7 +69,7 @@ module Legion
             end
 
             base = rosy_count.to_f / @memories.size
-            avg_inflation = rosy_count > 0 ? inflation_sum / rosy_count : 0.0
+            avg_inflation = rosy_count.positive? ? inflation_sum / rosy_count : 0.0
             (base * avg_inflation).clamp(0.0, 1.0).round(10)
           end
 
@@ -95,15 +95,15 @@ module Legion
             index = rosy_retrospection_index
             proneness = nostalgia_proneness
             {
-              total_memories:            @memories.size,
-              total_events:              @events.size,
-              rosy_retrospection_index:  index,
-              retrospection_label:       Constants.label_for(Constants::RETROSPECTION_LABELS, index),
-              nostalgia_proneness:       proneness,
-              nostalgia_label:           Constants.label_for(Constants::NOSTALGIA_LABELS, proneness),
-              most_nostalgic_domains:    most_nostalgic_domains,
-              bittersweet_count:         bittersweet_memories.size,
-              rosy_count:                @memories.count(&:rosy?)
+              total_memories:           @memories.size,
+              total_events:             @events.size,
+              rosy_retrospection_index: index,
+              retrospection_label:      Constants.label_for(Constants::RETROSPECTION_LABELS, index),
+              nostalgia_proneness:      proneness,
+              nostalgia_label:          Constants.label_for(Constants::NOSTALGIA_LABELS, proneness),
+              most_nostalgic_domains:   most_nostalgic_domains,
+              bittersweet_count:        bittersweet_memories.size,
+              rosy_count:               @memories.count(&:rosy?)
             }
           end
 

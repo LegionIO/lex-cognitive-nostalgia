@@ -3,9 +3,9 @@
 RSpec.describe Legion::Extensions::CognitiveNostalgia::Helpers::NostalgiaEvent do
   subject(:event) do
     described_class.new(
-      memory_id:     'abc-123',
-      trigger:       'old song',
-      intensity:     0.7,
+      memory_id:      'abc-123',
+      trigger:        'old song',
+      intensity:      0.7,
       effect_on_mood: 0.4
     )
   end
@@ -53,7 +53,7 @@ RSpec.describe Legion::Extensions::CognitiveNostalgia::Helpers::NostalgiaEvent d
     it 'includes all fields' do
       h = event.to_h
       expect(h).to include(:id, :memory_id, :trigger, :intensity, :nostalgia_label,
-                            :effect_on_mood, :occurred_at)
+                           :effect_on_mood, :occurred_at)
     end
   end
 end

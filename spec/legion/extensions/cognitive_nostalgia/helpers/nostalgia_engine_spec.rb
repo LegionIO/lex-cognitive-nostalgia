@@ -29,8 +29,10 @@ RSpec.describe Legion::Extensions::CognitiveNostalgia::Helpers::NostalgiaEngine 
 
   describe '#trigger_nostalgia' do
     before do
-      engine.create_memory(content: 'old friend from school', domain: :relationship, original_valence: 0.5)
-      engine.create_memory(content: 'school lunchroom', domain: :place, original_valence: 0.4)
+      engine.create_memory(content: 'old friend from school', domain: :relationship,
+                           warmth: 0.7, original_valence: 0.5)
+      engine.create_memory(content: 'school lunchroom', domain: :place,
+                           warmth: 0.6, original_valence: 0.4)
     end
 
     context 'when memories match the trigger' do

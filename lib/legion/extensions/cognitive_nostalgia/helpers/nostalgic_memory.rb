@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'securerandom'
+
 module Legion
   module Extensions
     module CognitiveNostalgia
@@ -9,14 +11,14 @@ module Legion
 
           def initialize(content:, domain: :unknown, warmth: Constants::DEFAULT_WARMTH,
                          original_valence: 0.5)
-            @id               = SecureRandom.uuid
+            @id               = ::SecureRandom.uuid
             @content          = content
             @domain           = normalize_domain(domain)
             @warmth           = warmth.clamp(0.0, Constants::WARMTH_CEILING)
             @original_valence = original_valence.clamp(0.0, 1.0)
             @current_valence  = @original_valence
             @temporal_distance = 0
-            @created_at       = Time.now.utc
+            @created_at = Time.now.utc
           end
 
           def warmth
@@ -82,7 +84,7 @@ module Legion
           end
 
           def temporal_distance_factor
-            1.0 + (Math.log1p(@temporal_distance) * 0.1)
+            1.0 + (::Math.log(1 + @temporal_distance) * 0.1)
           end
         end
       end
